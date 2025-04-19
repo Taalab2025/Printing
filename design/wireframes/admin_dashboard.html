@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard Wireframe - Printing Services Marketplace</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f9fafb;
+        }
+        .wireframe-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #1F2937;
+            color: white;
+            padding: 20px 0;
+            flex-shrink: 0;
+        }
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #374151;
+            margin-bottom: 20px;
+        }
+        .sidebar-logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar-menu li {
+            padding: 10px 20px;
+            margin-bottom: 5px;
+        }
+        .sidebar-menu li.active {
+            background-color: #374151;
+            border-left: 4px solid #3B82F6;
+        }
+        .sidebar-menu li:hover {
+            background-color: #374151;
+            cursor: pointer;
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .page-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background-color: #e5e7eb;
+            border-radius: 50%;
+        }
+        .language-switch {
+            padding: 5px 10px;
+            border: 1px solid #e5e7eb;
+            border-radius: 4px;
+            background-color: white;
+        }
+        .dashboard-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .stat-value {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .section-title {
+            margin: 30px 0 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .activity-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .activity-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        .activity-time {
+            font-size: 12px;
+            color: #6B7280;
+        }
+        .table-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        th {
+            background-color: #f9fafb;
+            font-weight: bold;
+        }
+        tr:hover {
+            background-color: #f9fafb;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .status-pending {
+            background-color: #FEF3C7;
+            color: #92400E;
+        }
+        .status-active {
+            background-color: #D1FAE5;
+            color: #065F46;
+        }
+        .status-suspended {
+            background-color: #FEE2E2;
+            color: #B91C1C;
+        }
+        .action-button {
+            padding: 6px 12px;
+            border-radius: 4px;
+            background-color: #3B82F6;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .action-button.danger {
+            background-color: #EF4444;
+        }
+        .chart-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            height: 300px;
+            position: relative;
+        }
+        .chart-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6B7280;
+            font-style: italic;
+        }
+        .search-filter {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .search-input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+        }
+        .filter-select {
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            background-color: white;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .page-item {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .page-item.active {
+            background-color: #3B82F6;
+            color: white;
+            border-color: #3B82F6;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .wireframe-container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                padding: 10px 0;
+            }
+            .sidebar-header {
+                padding: 0 10px 10px;
+            }
+            .sidebar-menu {
+                display: flex;
+                overflow-x: auto;
+                padding: 0 10px;
+            }
+            .sidebar-menu li {
+                padding: 10px;
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wireframe-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">PrintMarket</div>
+                <div>Admin Dashboard</div>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="active">Dashboard</li>
+                <li>User Management</li>
+                <li>Vendor Management</li>
+                <li>Categories</li>
+                <li>Services</li>
+                <li>Orders</li>
+                <li>Reviews</li>
+                <li>Subscriptions</li>
+                <li>Settings</li>
+            </ul>
+        </aside>
+        
+        <main class="main-content">
+            <header class="header">
+                <div class="page-title">Admin Dashboard</div>
+                <div class="user-menu">
+                    <div class="language-switch">EN | AR</div>
+                    <div class="notifications">🔔</div>
+                    <div class="user-avatar"></div>
+                </div>
+            </header>
+            
+            <section class="dashboard-stats">
+                <div class="stat-card">
+                    <div>Total Users</div>
+                    <div class="stat-value">1,245</div>
+                    <div>+15 this week</div>
+                </div>
+                <div class="stat-card">
+                    <div>Active Vendors</div>
+                    <div class="stat-value">87</div>
+                    <div>+3 this week</div>
+                </div>
+                <div class="stat-card">
+                    <div>Total Orders</div>
+                    <div class="stat-value">3,456</div>
+                    <div>+120 this month</div>
+                </div>
+                <div class="stat-card">
+                    <div>Platform Revenue</div>
+                    <div class="stat-value">$12,450</div>
+                    <div>+8% from last month</div>
+                </div>
+            </section>
+            
+            <div class="chart-container">
+                <h3>Monthly Orders & Revenue</h3>
+                <div class="chart-placeholder">[Line chart showing monthly orders and revenue trends would appear here]</div>
+            </div>
+            
+            <h2 class="section-title">Recent Activity</h2>
+            <div class="card-grid">
+                <div class="activity-card">
+                    <h3>System Updates</h3>
+                    <div class="activity-item">
+                        <div>New vendor registration: Cairo Print Masters</div>
+                        <div class="activity-time">Today, 10:23 AM</div>
+                    </div>
+                    <div class="activity-item">
+                        <div>Service approval request: Premium Business Cards</div>
+                        <div class="activity-time">Today, 09:15 AM</div>
+                    </div>
+                    <div class="activity-item">
+                        <div>User reported issue with payment gateway</div>
+                        <div class="activity-time">Yesterday, 04:30 PM</div>
+                    </div>
+                    <div class="activity-item">
+                        <div>New subscription plan created: Enterprise</div>
+                        <div class="activity-time">Yesterday, 02:45 PM</div>
+                    </div>
+                </div>
+                
+                <div class="activity-card">
+                    <h3>Pending Actions</h3>
+                    <div class="activity-item">
+                        <div>5 vendor registrations awaiting approval</div>
+                        <button class="action-button">Review</button>
+                    </div>
+                    <div class="activity-item">
+                        <div>12 services awaiting approval</div>
+                        <button class="action-button">Review</button>
+                    </div>
+                    <div class="activity-item">
+                        <div>3 reported reviews requiring moderation</div>
+                        <button class="action-button">Moderate</button>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Vendor Management</h2>
+            <div class="search-filter">
+                <input type="text" class="search-input" placeholder="Search vendors...">
+                <select class="filter-select">
+                    <option>All Statuses</option>
+                    <option>Active</option>
+                    <option>Pending</option>
+                    <option>Suspended</option>
+                </select>
+                <select class="filter-select">
+                    <option>All Subscription Types</option>
+                    <option>Free</option>
+                    <option>Premium</option>
+                </select>
+                <button class="action-button">Search</button>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Vendor Name</th>
+                            <th>Contact</th>
+                            <th>Subscription</th>
+                            <th>Status</th>
+                            <th>Rating</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#V-1001</td>
+                            <td>Printing Solutions Ltd</td>
+                            <td>vendor1@printingmarketplace.com</td>
+                            <td>Free</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>4.5 ⭐</td>
+                            <td>
+                                <button class="action-button">View</button>
+                                <button class="action-button danger">Suspend</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#V-1002</td>
+                            <td>Cairo Print Masters</td>
+                            <td>vendor2@printingmarketplace.com</td>
+                            <td>Premium</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>4.8 ⭐</td>
+                            <td>
+                                <button class="action-button">View</button>
+                                <button class="action-button danger">Suspend</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#V-1003</td>
+                            <td>Alexandria Printing Co.</td>
+                            <td>info@alexandriaprinting.com</td>
+                            <td>Premium</td>
+                            <td><span class="status-badge status-pending">Pending</span></td>
+                            <td>N/A</td>
+                            <td>
+                                <button class="action-button">Approve</button>
+                                <button class="action-button danger">Reject</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#V-1004</td>
+                            <td>Delta Printers</td>
+                            <td>contact@deltaprinters.com</td>
+                            <td>Free</td>
+                            <td><span class="status-badge status-suspended">Suspended</span></td>
+                            <td>2.1 ⭐</td>
+                            <td>
+                                <button class="action-button">View</button>
+                                <button class="action-button">Reactivate</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="pagination">
+                    <div class="page-item">«</div>
+                    <div class="page-item active">1</div>
+                    <div class="page-item">2</div>
+                    <div class="page-item">3</div>
+                    <div class="page-item">4</div>
+                    <div class="page-item">»</div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Recent Orders</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Vendor</th>
+                            <th>Service</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#ORD-5678</td>
+                            <td>Nour Ibrahim</td>
+                            <td>Printing Solutions Ltd</td>
+                            <td>Business Cards</td>
+                            <td>$45.00</td>
+                            <td>Apr 17, 2025</td>
+                            <td><span class="status-badge status-active">In Production</span></td>
+                            <td><button class="action-button">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>#ORD-5677</td>
+                            <td>Karim Mahmoud</td>
+                            <td>Cairo Print Masters</td>
+                            <td>Banners</td>
+                            <td>$120.00</td>
+                            <td>Apr 16, 2025</td>
+                            <td><span class="status-badge status-active">In Production</span></td>
+                            <td><button class="action-button">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>#ORD-5676</td>
+                            <td>Sara Hassan</td>
+                            <td>Printing Solutions Ltd</td>
+                            <td>Brochures</td>
+                            <td>$85.00</td>
+                            <td>Apr 15, 2025</td>
+                            <td><span class="status-badge status-pending">Pending</span></td>
+                            <td><button class="action-button">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>#ORD-5675</td>
+                            <td>Omar Farouk</td>
+                            <td>Cairo Print Masters</td>
+                            <td>Flyers</td>
+                            <td>$65.00</td>
+                            <td>Apr 14, 2025</td>
+                            <td><span class="status-badge status-active">Delivered</span></td>
+                            <td><button class="action-button">View</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="pagination">
+                    <div class="page-item">«</div>
+                    <div class="page-item active">1</div>
+                    <div class="page-item">2</div>
+                    <div class="page-item">3</div>
+                    <div class="page-item">4</div>
+                    <div class="page-item">»</div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

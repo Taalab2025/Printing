@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Details Wireframe - Printing Services Marketplace</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f9fafb;
+        }
+        .wireframe-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav {
+            display: flex;
+            gap: 20px;
+        }
+        .nav-item {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .user-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .breadcrumbs {
+            margin-bottom: 20px;
+            color: #6B7280;
+        }
+        .service-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .gallery {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .main-image {
+            width: 100%;
+            height: 300px;
+            background-color: #f0f0f0;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .thumbnails {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .thumbnail {
+            width: 60px;
+            height: 60px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .thumbnail.active {
+            border: 2px solid #3B82F6;
+        }
+        .service-details {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .service-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .vendor-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .vendor-logo {
+            width: 50px;
+            height: 50px;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .vendor-rating {
+            margin-left: 10px;
+            color: #F59E0B;
+        }
+        .price-info {
+            background-color: #f9fafb;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #3B82F6;
+        }
+        .description {
+            margin-bottom: 20px;
+        }
+        .cta-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #3B82F6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .secondary-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: white;
+            color: #3B82F6;
+            border: 1px solid #3B82F6;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .tab.active {
+            border-bottom: 2px solid #3B82F6;
+            font-weight: bold;
+        }
+        .tab-content {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        .specifications {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .spec-item {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        .spec-label {
+            font-weight: bold;
+            width: 150px;
+        }
+        .reviews {
+            margin-top: 20px;
+        }
+        .review-item {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 15px 0;
+        }
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .reviewer {
+            font-weight: bold;
+        }
+        .review-date {
+            color: #6B7280;
+        }
+        .review-rating {
+            color: #F59E0B;
+            margin-bottom: 10px;
+        }
+        .related-services {
+            margin-top: 40px;
+        }
+        .related-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .card-image {
+            height: 150px;
+            background-color: #f0f0f0;
+        }
+        .card-content {
+            padding: 15px;
+        }
+        .card-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .card-vendor {
+            color: #6B7280;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .card-price {
+            font-weight: bold;
+            color: #3B82F6;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .service-container {
+                grid-template-columns: 1fr;
+            }
+            .specifications {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wireframe-container">
+        <header class="header">
+            <div class="logo">PrintMarket</div>
+            <nav class="nav">
+                <div class="nav-item">Home</div>
+                <div class="nav-item">Categories</div>
+                <div class="nav-item">Vendors</div>
+                <div class="nav-item">How It Works</div>
+            </nav>
+            <div class="user-actions">
+                <div class="nav-item">EN | AR</div>
+                <div class="nav-item">Login</div>
+                <div class="nav-item">Register</div>
+            </div>
+        </header>
+        
+        <div class="breadcrumbs">
+            Home > Categories > Business Cards > Premium Business Cards
+        </div>
+        
+        <div class="service-container">
+            <div class="gallery">
+                <div class="main-image"></div>
+                <div class="thumbnails">
+                    <div class="thumbnail active"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                    <div class="thumbnail"></div>
+                </div>
+            </div>
+            
+            <div class="service-details">
+                <h1 class="service-title">Premium Business Cards - 350gsm Matte Finish</h1>
+                <div class="vendor-info">
+                    <div class="vendor-logo"></div>
+                    <div>
+                        <div>Printing Solutions Ltd</div>
+                        <div class="vendor-rating">⭐⭐⭐⭐½ (4.5)</div>
+                    </div>
+                </div>
+                
+                <div class="price-info">
+                    <div>Starting from</div>
+                    <div class="price">$25.00</div>
+                    <div>per 100 cards</div>
+                </div>
+                
+                <div class="description">
+                    <p>High-quality premium business cards printed on 350gsm matte card stock. Perfect for making a professional impression. Available in standard size (85mm x 55mm) with various finishing options.</p>
+                </div>
+                
+                <button class="cta-button">Request a Quote</button>
+                <button class="secondary-button">Contact Vendor</button>
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <div class="tab active">Specifications</div>
+            <div class="tab">Reviews</div>
+            <div class="tab">Vendor Info</div>
+        </div>
+        
+        <div class="tab-content">
+            <h2>Product Specifications</h2>
+            <div class="specifications">
+                <div class="spec-item">
+                    <div class="spec-label">Paper Type:</div>
+                    <div>350gsm Premium Card Stock</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Finish:</div>
+                    <div>Matte</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Size:</div>
+                    <div>85mm x 55mm (Standard)</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Printing:</div>
+                    <div>Full Color Both Sides (4/4)</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Minimum Order:</div>
+                    <div>100 Cards</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Production Time:</div>
+                    <div>3-5 Business Days</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Optional Extras:</div>
+                    <div>Spot UV, Foil Stamping, Embossing</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">File Format:</div>
+                    <div>PDF, AI, PSD (300 DPI)</div>
+                </div>
+            </div>
+            
+            <h2>Reviews</h2>
+            <div class="reviews">
+                <div class="review-item">
+                    <div class="review-header">
+                        <div class="reviewer">Ahmed H.</div>
+                        <div class="review-date">April 10, 2025</div>
+                    </div>
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                    <p>Excellent quality business cards. The matte finish looks very professional and the colors are vibrant. Delivery was on time and the packaging was secure. Will order again!</p>
+                </div>
+                <div class="review-item">
+                    <div class="review-header">
+                        <div class="reviewer">Fatima M.</div>
+                        <div class="review-date">April 5, 2025</div>
+                    </div>
+                    <div class="review-rating">⭐⭐⭐⭐</div>
+                    <p>Good quality cards, but the corners were slightly rounded when I expected sharp corners. Otherwise, the printing quality is excellent and the vendor was responsive to my questions.</p>
+                </div>
+                <div class="review-item">
+                    <div class="review-header">
+                        <div class="reviewer">Mohamed R.</div>
+                        <div class="review-date">March 28, 2025</div>
+                    </div>
+                    <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                    <p>Perfect business cards for my new startup. The vendor was helpful in adjusting my design to fit their template. Fast production and delivery.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="related-services">
+            <h2 class="related-title">Related Services</h2>
+            <div class="service-cards">
+                <div class="service-card">
+                    <div class="card-image"></div>
+                    <div class="card-content">
+                        <div class="card-title">Luxury Business Cards - Soft Touch</div>
+                        <div class="card-vendor">Printing Solutions Ltd</div>
+                        <div class="card-price">From $35.00</div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="card-image"></div>
+                    <div class="card-content">
+                        <div class="card-title">Standard Business Cards - Glossy</div>
+                        <div class="card-vendor">Cairo Print Masters</div>
+                        <div class="card-price">From $20.00</div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="card-image"></div>
+                    <div class="card-content">
+                        <div class="card-title">Business Cards with Spot UV</div>
+                        <div class="card-vendor">Premium Print Co.</div>
+                        <div class="card-price">From $30.00</div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="card-image"></div>
+                    <div class="card-content">
+                        <div class="card-title">Metal Business Cards</div>
+                        <div class="card-vendor">Luxury Print Services</div>
+                        <div class="card-price">From $75.00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

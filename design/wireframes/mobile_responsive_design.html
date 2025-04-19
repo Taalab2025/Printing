@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Responsive Design - Printing Services Marketplace</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .wireframe-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        .section-title {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 20px;
+        }
+        .mobile-view {
+            border: 2px solid #ddd;
+            border-radius: 20px;
+            width: 320px;
+            margin: 0 auto 40px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .mobile-header {
+            background-color: #fff;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+        .mobile-logo {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .mobile-menu-icon {
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .mobile-search {
+            padding: 10px;
+            background-color: #f5f5f5;
+        }
+        .search-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        .mobile-nav {
+            display: flex;
+            overflow-x: auto;
+            padding: 10px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .mobile-nav-item {
+            flex: 0 0 auto;
+            padding: 8px 12px;
+            margin-right: 8px;
+            background-color: #f5f5f5;
+            border-radius: 16px;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        .mobile-nav-item.active {
+            background-color: #3B82F6;
+            color: white;
+        }
+        .mobile-content {
+            padding: 10px;
+            background-color: #f9fafb;
+            min-height: 500px;
+        }
+        .mobile-card {
+            background-color: #fff;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .mobile-card-image {
+            height: 120px;
+            background-color: #f0f0f0;
+        }
+        .mobile-card-content {
+            padding: 10px;
+        }
+        .mobile-card-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+        .mobile-card-vendor {
+            color: #6B7280;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .mobile-card-price {
+            font-weight: bold;
+            color: #3B82F6;
+        }
+        .mobile-footer {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            background-color: #fff;
+            border-top: 1px solid #eee;
+        }
+        .mobile-footer-item {
+            text-align: center;
+            font-size: 12px;
+        }
+        .mobile-footer-icon {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        .mobile-drawer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        .mobile-drawer.open {
+            transform: translateX(0);
+        }
+        .drawer-header {
+            padding: 20px 15px;
+            background-color: #3B82F6;
+            color: white;
+        }
+        .drawer-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+        }
+        .drawer-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .drawer-menu-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .mobile-detail-header {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        .back-button {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        .mobile-detail-title {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .mobile-detail-image {
+            height: 200px;
+            background-color: #f0f0f0;
+        }
+        .mobile-detail-content {
+            padding: 15px;
+            background-color: #fff;
+        }
+        .mobile-detail-section {
+            margin-bottom: 20px;
+        }
+        .mobile-detail-section-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .mobile-tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            background-color: #fff;
+        }
+        .mobile-tab {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+        }
+        .mobile-tab.active {
+            border-bottom: 2px solid #3B82F6;
+            color: #3B82F6;
+            font-weight: bold;
+        }
+        .mobile-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #3B82F6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 15px;
+        }
+        .mobile-form-group {
+            margin-bottom: 15px;
+        }
+        .mobile-form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .mobile-form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        /* RTL Support for Arabic */
+        .rtl {
+            direction: rtl;
+        }
+        .rtl .mobile-nav {
+            flex-direction: row-reverse;
+        }
+        .rtl .mobile-nav-item {
+            margin-right: 0;
+            margin-left: 8px;
+        }
+        .rtl .back-button {
+            margin-right: 0;
+            margin-left: 10px;
+        }
+        .rtl .mobile-drawer {
+            left: auto;
+            right: 0;
+            transform: translateX(100%);
+        }
+        .rtl .mobile-drawer.open {
+            transform: translateX(0);
+        }
+        .rtl .drawer-close {
+            right: auto;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wireframe-container">
+        <h1 class="section-title">Mobile Responsive Design</h1>
+        
+        <h2 class="section-title">Homepage (English)</h2>
+        <div class="mobile-view">
+            <div class="mobile-header">
+                <div class="mobile-logo">PrintMarket</div>
+                <div class="mobile-menu-icon">☰</div>
+            </div>
+            
+            <div class="mobile-search">
+                <input type="text" class="search-input" placeholder="Search for printing services...">
+            </div>
+            
+            <div class="mobile-nav">
+                <div class="mobile-nav-item active">All</div>
+                <div class="mobile-nav-item">Business Cards</div>
+                <div class="mobile-nav-item">Banners</div>
+                <div class="mobile-nav-item">Brochures</div>
+                <div class="mobile-nav-item">Flyers</div>
+                <div class="mobile-nav-item">Stationery</div>
+            </div>
+            
+            <div class="mobile-content">
+                <div class="mobile-card">
+                    <div class="mobile-card-image"></div>
+                    <div class="mobile-card-content">
+                        <div class="mobile-card-title">Premium Business Cards</div>
+                        <div class="mobile-card-vendor">Printing Solutions Ltd</div>
+                        <div class="mobile-card-price">From $25.00</div>
+                    </div>
+                </div>
+                
+                <div class="mobile-card">
+                    <div class="mobile-card-image"></div>
+                    <div class="mobile-card-content">
+                        <div class="mobile-card-title">Large Format Banners</div>
+                        <div class="mobile-card-vendor">Cairo Print Masters</div>
+                        <div class="mobile-card-price">From $45.00</div>
+                    </div>
+                </div>
+                
+                <div class="mobile-card">
+                    <div class="mobile-card-image"></div>
+                    <div class="mobile-card-content">
+                        <div class="mobile-card-title">Tri-fold Brochures</div>
+                        <div class="mobile-card-vendor">Printing Solutions Ltd</div>
+                        <div class="mobile-card-price">From $35.00</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mobile-footer">
+                <div class="mobile-footer-item">
+                    <div class="mobile-footer-icon">🏠</div>
+                    <div>Home</div>
+                </div>
+                <div class="mobile-footer-item">
+                    <div class="mobile-footer-icon">🔍</div>
+                    <div>Search</div>
+                </div>
+                <div class="mobile-footer-item">
+                    <div class="mobile-footer-icon">📋</div>
+                    <div>Orders</div>
+                </div>
+                <div class="mobile-footer-item">
+                    <div class="mobile-footer-icon">👤</div>
+                    <div>Profile</div>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Service Details (English)</h2>
+        <div class="mobile-view">
+            <div class="mobile-detail-header">
+                <div class="back-button">←</div>
+                <div class="mobile-detail-title">Premium Business Cards</div>
+            </div>
+            
+            <div class="mobile-detail-image"></div>
+            
+            <div class="mobile-detail-content">
+                <div class="mobile-detail-section">
+                    <h3 class="mobile-detail-section-title">Premium Business Cards - 350gsm Matte Finish</h3>
+                    <div class="mobile-card-vendor">Printing Solutions Ltd</div>
+                    <div>⭐⭐⭐⭐½ (4.5)</div>
+                </div>
+                
+                <div class="mobile-detail-section">
+                    <div>Starting from</div>
+                    <div class="mobile-card-price" style="font-size: 20px;">$25.00</div>
+                    <div>per 100 cards</div>
+                </div>
+                
+                <div class="mobile-detail-section">
+                    <p>High-quality premium business cards printed on 350gsm matte card stock. Perfect for making a professional impression.</p>
+                </div>
+                
+                <button class="mobile-button">Request a Quote</button>
+            </div>
+            
+            <div class="mobile-tabs">
+                <div class="mobile-tab active">Specs</div>
+                <div class="mobile-tab">Reviews</div>
+                <div class="mobile-tab">Vendor</div>
+            </div>
+            
+            <div class="mobile-detail-content">
+                <div class="mobile-detail-section">
+                    <div><strong>Paper Type:</strong> 350gsm Premium Card Stock</div>
+                    <div><strong>Finish:</strong> Matte</div>
+                    <div><strong>Size:</strong> 85mm x 55mm (Standard)</div>
+                    <div><strong>Printing:</strong> Full Color Both Sides (4/4)</div>
+                    <div><strong>Minimum Order:</strong> 100 Cards</div>
+                    <div><strong>Production Time:</strong> 3-5 Business Days</div>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Quote Request Form (English)</h2>
+        <div class="mobile-view">
+            <div class="mobile-detail-header">
+                <div class="back-button">←</div>
+                <div class="mobile-detail-title">Request a Quote</div>
+            </div>
+            
+            <div class="mobile-detail-content">
+                <div class="mobile-detail-section">
+                    <h3 class="mobile-detail-section-title">Service Information</h3>
+                    <div><strong>Service:</strong> Premium Business Cards</div>
+                    <div><strong>Vendor:</strong> Printing Solutions Ltd</div>
+                    <div><strong>Base Price:</strong> $25.00 per 100 cards</div>
+                </div>
+                
+                <div class="mobile-detail-section">
+                    <h3 class="mobile-detail-section-title">Quote Details</h3>
+                    
+                    <div class="mobile-form-group">
+                        <label class="mobile-form-label">Quantity</label>
+                        <select class="mobile-form-input">
+                            <option>100 cards</option>
+                            <option>250 cards</option>
+                            <option>500 cards</option>
+                            <option>1000 cards</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mobile-form-group">
+                        <label class="mobile-form-label">Paper Type</label>
+                        <select class="mobile-form-input">
+                            <option>350gsm Matte (Standard)</option>
+                            <option>350gsm Glossy</option>
+                            <option>400gsm Matte</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mobile-form-group">
+                        <label class="mobile-form-label">Special Requirements</label>
+                        <textarea class="mobile-form-input" rows="4"></textarea>
+                    </div>
+                </div>
+                
+                <div class="mobile-detail-section">
+                    <h3 class="mobile-detail-section-title">Upload Design Files</h3>
+                    <div style="border: 2px dashed #ddd; padding: 15px; text-align: center; margin-bottom: 10px;">
+                        <div>📁</div>
+                        <div>Tap to upload files</div>
+                    </div>
+                </div>
+                
+                <button class="mobile-button">Submit Quote Request</button>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Homepage (Arabic - RTL)</h2>
+        <div class="mobile-view rtl">
+            <div class="mobile-header">
+                <div class="mobile-menu-icon">☰</div>
+                <div class="mobile-logo">برينت ماركت</div>
+            </div>
+            
+            <div class="mobile-search">
+                <input type="text" class="search-input" placeholder="ابحث عن خدمات الطباعة...">
+            </div>
+            
+            <div class="mobile-nav">
+                <div class="mobile-nav-item">قرطاسية</div>
+                <div class="mobile-nav-item">منشورات</div>
+                <div class="mobile-nav-item">كتيبات</div>
+                <div class="mobile-nav-item">لافتات</div>
+                <div class="mobile-nav-item">بطاقات العمل</div>
+                <div class="mobile-nav-item active">الكل</div>
+            </div>
+            
+            <div class="mobile-content">
+                <div class="mobile-card">
+                    <div class="mobile-card-image"></div>
+                    <div class="mobile-card-content">
+                        <div class="mobile-card-title">بطاقات عمل فاخرة</div>
+                        <div class="mobile-card-vendor">حلول الطباعة المحدودة</div>
+                        <div class="mobile-card-price">من 25.00$</div>
+                    </div>
+                </div>
+                
+                <div class="mobile-card">
+                    <div class="mobile-card-image"></div>
+                    <div class="mobile-card-content">
+                        <div class="mobile-card-title">لافتات كبيرة الحجم</div>
+                        <div class="mobile-card-vendor">القاهرة برنت ماسترز</div>
+                        <div class="mobile-card-price">من 45.00$</div>
+                    </div>
+                </div>
+                
+                <div class="mobile-card">
+                    <div class="mobile-card-image"></div>
+                    <div class="mobile-card-content">
+                        <div class="mobile-card-title">كتيبات ثلاثية الطي</div>
+                        <div class="mobile-card-vendor">حلول الطباعة المحدودة</div>
+                        <div class="mobile-card-price">من 35.00$</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mobile-footer">
+                <div class="mobile-footer-item">
+                    <div class="mobile-footer-icon">👤</div>
+                    <div>الملف الشخصي</div>
+                </div>
+                <div class="mobile-footer-item">
+                    <div class="mobile-footer-icon">📋</div>
+                    <div>الطلبات</div>
+                </div>
+                <div class="mobile-footer-item">
+                    <div class="mobile-footer-icon">🔍</div>
+                    <div>بحث</div>
+                </div>
+                <div class="mobile-footer-item">
+                    <div class="mobile-footer-icon">🏠</div>
+                    <div>الرئيسية</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
