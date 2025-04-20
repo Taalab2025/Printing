@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Role;
-use Illuminate\Foundation\Auth\RegistersUsers;
+//use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Traits\RegistersUsers;
+
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -46,13 +48,13 @@ class RegisterController extends Controller
             'phone' => ['required', 'string', 'phone', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'secure_password', 'confirmed'],
             'terms' => ['required', 'accepted'],
-            'g-recaptcha-response' => ['required', 'captcha'],
+            //'g-recaptcha-response' => ['required', 'captcha'],
         ], [
             'phone.phone' => 'The phone number format is invalid.',
             'password.secure_password' => 'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.',
             'terms.accepted' => 'You must accept the terms and conditions.',
-            'g-recaptcha-response.required' => 'Please complete the reCAPTCHA verification.',
-            'g-recaptcha-response.captcha' => 'reCAPTCHA verification failed. Please try again.',
+         //   'g-recaptcha-response.required' => 'Please complete the reCAPTCHA verification.',
+         //   'g-recaptcha-response.captcha' => 'reCAPTCHA verification failed. Please try again.',
         ]);
     }
 

@@ -29,12 +29,12 @@
             <div>
                 <h3 class="text-lg font-bold mb-4">Quick Links</h3>
                 <ul class="space-y-2">
-                    <li><a href="{{ route('home') }}" class="text-gray-300 hover:text-white">Home</a></li>
-                    <li><a href="{{ route('categories') }}" class="text-gray-300 hover:text-white">Categories</a></li>
-                    <li><a href="{{ route('vendors') }}" class="text-gray-300 hover:text-white">Vendors</a></li>
-                    <li><a href="{{ route('how-it-works') }}" class="text-gray-300 hover:text-white">How It Works</a></li>
-                    <li><a href="{{ route('about') }}" class="text-gray-300 hover:text-white">About Us</a></li>
-                    <li><a href="{{ route('contact') }}" class="text-gray-300 hover:text-white">Contact Us</a></li>
+                    <li><a href="{{ url('/') }}" class="text-gray-300 hover:text-white">Home</a></li>
+                    <li><a href="{{ url('/categories') }}" class="text-gray-300 hover:text-white">Categories</a></li>
+                    <li><a href="{{ url('/vendors') }}" class="text-gray-300 hover:text-white">Vendors</a></li>
+                    <li><a href="{{ url('/how-it-works') }}" class="text-gray-300 hover:text-white">How It Works</a></li>
+                    <li><a href="{{ url('/about') }}" class="text-gray-300 hover:text-white">About Us</a></li>
+                    <li><a href="{{ url('/contact') }}" class="text-gray-300 hover:text-white">Contact Us</a></li>
                 </ul>
             </div>
             
@@ -44,14 +44,14 @@
                     <li><a href="{{ route('quotes.create') }}" class="text-gray-300 hover:text-white">Request a Quote</a></li>
                     <li><a href="{{ route('orders') }}" class="text-gray-300 hover:text-white">Track Orders</a></li>
                     <li><a href="{{ route('support.customer') }}" class="text-gray-300 hover:text-white">Customer Support</a></li>
-                    <li><a href="{{ route('faqs') }}" class="text-gray-300 hover:text-white">FAQs</a></li>
+                    <li><a href="{{ url('/faqs') }}" class="text-gray-300 hover:text-white">FAQs</a></li>
                 </ul>
             </div>
             
             <div>
                 <h3 class="text-lg font-bold mb-4">For Vendors</h3>
                 <ul class="space-y-2">
-                    <li><a href="{{ route('vendor.register') }}" class="text-gray-300 hover:text-white">Join as Vendor</a></li>
+                    <li><a href="{{ url('/vendor/register') }}" class="text-gray-300 hover:text-white">Join as Vendor</a></li>
                     <li><a href="{{ route('vendor.dashboard') }}" class="text-gray-300 hover:text-white">Vendor Dashboard</a></li>
                     <li><a href="{{ route('vendor.subscriptions') }}" class="text-gray-300 hover:text-white">Subscription Plans</a></li>
                     <li><a href="{{ route('support.vendor') }}" class="text-gray-300 hover:text-white">Vendor Support</a></li>

@@ -11,7 +11,7 @@
             </h2>
             <p class="mt-2 text-center text-sm text-gray-600">
                 Or
-                <a href="{{ route('login') }}" class="font-medium text-blue-600 hover:text-blue-500">
+                <a href="{{ url('/login') }}" class="font-medium text-blue-600 hover:text-blue-500">
                     sign in to your existing account
                 </a>
             </p>
@@ -39,7 +39,7 @@
             </div>
         @endif
         
-        <form class="mt-8 space-y-6" action="{{ route('register') }}" method="POST">
+        <form class="mt-8 space-y-6" action="{{ url('/register') }}" method="POST">
             @csrf
             <div class="rounded-md shadow-sm -space-y-px">
                 <div>
@@ -94,19 +94,7 @@
             </div>
 
             <div class="mt-6 grid grid-cols-2 gap-3">
-                <div>
-                    <a href="{{ route('auth.google') }}" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                        <i class="fab fa-google text-red-500"></i>
-                        <span class="ml-2">Google</span>
-                    </a>
-                </div>
 
-                <div>
-                    <a href="{{ route('auth.facebook') }}" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                        <i class="fab fa-facebook text-blue-600"></i>
-                        <span class="ml-2">Facebook</span>
-                    </a>
-                </div>
             </div>
         </div>
         
@@ -123,7 +111,7 @@
             </div>
             
             <div class="mt-6">
-                <a href="{{ route('vendor.register') }}" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
+                <a href="{{ url('/vendor/register') }}" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">
                     Register as a Vendor
                 </a>
             </div>

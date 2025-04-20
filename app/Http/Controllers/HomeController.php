@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Simple data for the homepage without model dependencies
+        // Categories data with ID property for proper routing
         $categories = [
             ['id' => 1, 'name' => 'Business Cards', 'description' => 'Professional business cards printing', 'icon' => 'fa-id-card'],
             ['id' => 2, 'name' => 'Brochures', 'description' => 'High-quality brochure printing', 'icon' => 'fa-book-open'],

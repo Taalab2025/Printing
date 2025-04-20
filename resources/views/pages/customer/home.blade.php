@@ -33,7 +33,7 @@
             </h2>
             <div class="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
                 @foreach($categories as $category)
-                <a href="{{ route('categories.show', $category) }}" class="group">
+                <a href="{{ route('categories.show', $category->id) }}" class="group">
                     <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-md">
                         <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
                             <i class="fas {{ $category->icon }} text-blue-600 text-xl"></i>
@@ -43,7 +43,7 @@
                     </div>
                 </a>
                 @endforeach
-                <a href="{{ route('categories') }}" class="group">
+                <a href="{{ url('/categories') }}" class="group">
                     <div class="flex flex-col items-center p-4 bg-gray-50 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-md">
                         <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
                             <i class="fas fa-th text-blue-600 text-xl"></i>
@@ -68,7 +68,7 @@
                     <div class="p-6">
                         <div class="flex items-center">
                             <div class="flex-shrink-0 h-16 w-16 bg-gray-200 rounded-full overflow-hidden">
-                                @if($vendor->logo)
+                                @if(isset($vendor->logo) && $vendor->logo)
                                     <img src="{{ asset('storage/' . $vendor->logo) }}" alt="{{ $vendor->name }}" class="h-full w-full object-cover">
                                 @else
                                     <div class="h-full w-full flex items-center justify-center bg-blue-100 text-blue-600">
@@ -94,13 +94,13 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="mt-4 text-gray-600">{{ Str::limit($vendor->description, 100) }}</p>
+                        <p class="mt-4 text-gray-600">{{ \Illuminate\Support\Str::limit($vendor->description, 100) }}</p>
                         <div class="mt-4 flex items-center text-sm text-gray-500">
                             <i class="fas fa-map-marker-alt text-gray-400 mr-1"></i>
                             <span>{{ $vendor->city }}, {{ $vendor->country }}</span>
                         </div>
                         <div class="mt-6">
-                            <a href="{{ route('vendors.show', $vendor) }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <a href="{{ route('vendors.show', $vendor->id) }}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                                 View Profile
                             </a>
                         </div>
@@ -109,7 +109,7 @@
                 @endforeach
             </div>
             <div class="mt-10 text-center">
-                <a href="{{ route('vendors') }}" class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                <a href="{{ url('/vendors') }}" class="inline-flex items-center px-6 py-3 border border-gray-300 shadow-sm text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                     View All Vendors
                     <i class="fas fa-arrow-right ml-2"></i>
                 </a>
@@ -179,7 +179,7 @@
                     <p class="text-gray-600 italic mb-6">{{ $testimonial->content }}</p>
                     <div class="flex items-center">
                         <div class="flex-shrink-0 h-10 w-10 bg-gray-200 rounded-full overflow-hidden">
-                            @if($testimonial->user->profile_photo_path)
+                            @if(isset($testimonial->user->profile_photo_path) && $testimonial->user->profile_photo_path)
                                 <img src="{{ asset('storage/' . $testimonial->user->profile_photo_path) }}" alt="{{ $testimonial->user->name }}" class="h-full w-full object-cover">
                             @else
                                 <div class="h-full w-full flex items-center justify-center bg-blue-100 text-blue-600">
@@ -208,9 +208,8 @@
                 Join our marketplace to reach more customers and grow your business
             </p>
             <div class="mt-8">
-                <a href="{{ route('vendor.register') }}" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-blue-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-blue-700 focus:ring-white">
-                    Register as a Vendor
-                </a>
+                <a href="{{ url('/vendor/register') }}">Register as a Vendor</a>
+
             </div>
         </div>
     </section>

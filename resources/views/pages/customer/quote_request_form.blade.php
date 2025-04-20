@@ -9,7 +9,7 @@
             <ol class="flex items-center space-x-4">
                 <li>
                     <div>
-                        <a href="{{ route('home') }}" class="text-gray-400 hover:text-gray-500">
+                        <a href="{{ url('/') }}" class="text-gray-400 hover:text-gray-500">
                             <i class="fas fa-home"></i>
                             <span class="sr-only">Home</span>
                         </a>

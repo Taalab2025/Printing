@@ -4,23 +4,23 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('home') }}" class="text-2xl font-bold text-blue-600">
+                    <a href="{{ url('/') }}" class="text-2xl font-bold text-blue-600">
                         PrintMarket
                     </a>
                 </div>
                 
                 <!-- Navigation Links -->
                 <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
-                    <a href="{{ route('home') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('home') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' }} text-sm font-medium">
+                    <a href="{{ url('/') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('home') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' }} text-sm font-medium">
                         Home
                     </a>
-                    <a href="{{ route('categories') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('categories') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' }} text-sm font-medium">
+                    <a href="{{ url('/categories') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('categories') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' }} text-sm font-medium">
                         Categories
                     </a>
-                    <a href="{{ route('vendors') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('vendors') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' }} text-sm font-medium">
+                    <a href="{{ url('/vendors') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('vendors') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' }} text-sm font-medium">
                         Vendors
                     </a>
-                    <a href="{{ route('how-it-works') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('how-it-works') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' }} text-sm font-medium">
+                    <a href="{{ url('/how-it-works') }}" class="inline-flex items-center px-1 pt-1 border-b-2 {{ request()->routeIs('how-it-works') ? 'border-blue-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700' }} text-sm font-medium">
                         How It Works
                     </a>
                 </div>
@@ -72,10 +72,10 @@
                         </div>
                     </div>
                 @else
-                    <a href="{{ route('login') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    <a href="{{ url('/login') }}" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                         Login
                     </a>
-                    <a href="{{ route('register') }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    <a href="{{ url('/register') }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                         Register
                     </a>
                 @endauth
@@ -96,16 +96,16 @@
     <!-- Mobile menu, show/hide based on menu state -->
     <div class="hidden sm:hidden" id="mobile-menu">
         <div class="pt-2 pb-3 space-y-1">
-            <a href="{{ route('home') }}" class="block pl-3 pr-4 py-2 border-l-4 {{ request()->routeIs('home') ? 'border-blue-500 text-blue-700 bg-blue-50' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800' }} text-base font-medium">
+            <a href="{{ url('/') }}" class="block pl-3 pr-4 py-2 border-l-4 {{ request()->routeIs('home') ? 'border-blue-500 text-blue-700 bg-blue-50' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800' }} text-base font-medium">
                 Home
             </a>
-            <a href="{{ route('categories') }}" class="block pl-3 pr-4 py-2 border-l-4 {{ request()->routeIs('categories') ? 'border-blue-500 text-blue-700 bg-blue-50' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800' }} text-base font-medium">
+            <a href="{{ url('/categories') }}" class="block pl-3 pr-4 py-2 border-l-4 {{ request()->routeIs('categories') ? 'border-blue-500 text-blue-700 bg-blue-50' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800' }} text-base font-medium">
                 Categories
             </a>
-            <a href="{{ route('vendors') }}" class="block pl-3 pr-4 py-2 border-l-4 {{ request()->routeIs('vendors') ? 'border-blue-500 text-blue-700 bg-blue-50' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800' }} text-base font-medium">
+            <a href="{{ url('/vendors') }}" class="block pl-3 pr-4 py-2 border-l-4 {{ request()->routeIs('vendors') ? 'border-blue-500 text-blue-700 bg-blue-50' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800' }} text-base font-medium">
                 Vendors
             </a>
-            <a href="{{ route('how-it-works') }}" class="block pl-3 pr-4 py-2 border-l-4 {{ request()->routeIs('how-it-works') ? 'border-blue-500 text-blue-700 bg-blue-50' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800' }} text-base font-medium">
+            <a href="{{ url('/how-it-works') }}" class="block pl-3 pr-4 py-2 border-l-4 {{ request()->routeIs('how-it-works') ? 'border-blue-500 text-blue-700 bg-blue-50' : 'border-transparent text-gray-600 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-800' }} text-base font-medium">
                 How It Works
             </a>
         </div>
@@ -153,10 +153,10 @@
                 </div>
             @else
                 <div class="mt-3 space-y-1">
-                    <a href="{{ route('login') }}" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
+                    <a href="{{ url('/login') }}" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
                         Login
                     </a>
-                    <a href="{{ route('register') }}" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
+                    <a href="{{ url('/register') }}" class="block px-4 py-2 text-base font-medium text-gray-500 hover:text-gray-800 hover:bg-gray-100">
                         Register
                     </a>
                 </div>

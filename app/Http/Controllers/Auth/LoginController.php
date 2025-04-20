@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+//use App\Traits\AuthenticatesUsers;
+
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -56,10 +58,10 @@ class LoginController extends Controller
         $request->validate([
             'login' => 'required|string',
             'password' => 'required|string',
-            'g-recaptcha-response' => 'required|captcha',
+          //  'g-recaptcha-response' => 'required|captcha',
         ], [
-            'g-recaptcha-response.required' => 'Please complete the reCAPTCHA verification.',
-            'g-recaptcha-response.captcha' => 'reCAPTCHA verification failed. Please try again.',
+           // 'g-recaptcha-response.required' => 'Please complete the reCAPTCHA verification.',
+           // 'g-recaptcha-response.captcha' => 'reCAPTCHA verification failed. Please try again.',
         ]);
     }
 
@@ -81,7 +83,7 @@ class LoginController extends Controller
         if (class_exists('App\Models\AuditLog')) {
             \App\Models\AuditLog::create([
                 'user_id' => $user->id,
-                'user_role' => $user->roles->pluck('name')->first() ?? 'unknown',
+//'user_role' => $user->roles ? $user->roles->pluck('name')->first() : 'unknown',
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->userAgent(),
                 'method' => 'POST',
@@ -101,11 +103,12 @@ class LoginController extends Controller
         ]);
 
         // Redirect based on user role
-        if ($user->hasRole('admin')) {
-            return redirect()->route('admin.dashboard');
-        } elseif ($user->hasRole('vendor')) {
-            return redirect()->route('vendor.dashboard');
-        }
+if ($user->isAdmin()) {
+    return redirect()->route('admin.dashboard');
+} elseif ($user->isVendor()) {
+    return redirect()->route('vendor.dashboard');
+}
+
 
         return redirect()->route('customer.dashboard');
     }

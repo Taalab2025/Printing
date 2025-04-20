@@ -11,7 +11,7 @@
             </h2>
             <p class="mt-2 text-center text-sm text-gray-600">
                 Or
-                <a href="{{ route('register') }}" class="font-medium text-blue-600 hover:text-blue-500">
+                <a href="{{ url('/register') }}" class="font-medium text-blue-600 hover:text-blue-500">
                     create a new account
                 </a>
             </p>
@@ -54,13 +54,30 @@
             </div>
         @endif
         
-        <form class="mt-8 space-y-6" action="{{ route('login') }}" method="POST">
+        <form class="mt-8 space-y-6" action="{{ url('/login') }}" method="POST">
             @csrf
             <input type="hidden" name="remember" value="true">
             <div class="rounded-md shadow-sm -space-y-px">
                 <div>
-                    <label for="email" class="sr-only">Email address</label>
-                    <input id="email" name="email" type="email" autocomplete="email" required value="{{ old('email') }}" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" placeholder="Email address">
+<label for="login" class="sr-only">Email or Phone</label>
+<input
+  id="login"
+  name="login"
+  type="text"
+  value="{{ old('login') }}"
+  required
+  autofocus
+  autocomplete="username"
+  class="appearance-none rounded-none relative block w-full px-3 py-2 border
+         border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none
+         focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+  placeholder="Email or Phone"
+>
+
+{{-- display validation error for login --}}
+@error('login')
+  <p class="mt-1 text-red-600 text-sm">{{ $message }}</p>
+@enderror
                 </div>
                 <div>
                     <label for="password" class="sr-only">Password</label>
@@ -106,19 +123,8 @@
             </div>
 
             <div class="mt-6 grid grid-cols-2 gap-3">
-                <div>
-                    <a href="{{ route('auth.google') }}" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                        <i class="fab fa-google text-red-500"></i>
-                        <span class="ml-2">Google</span>
-                    </a>
-                </div>
 
-                <div>
-                    <a href="{{ route('auth.facebook') }}" class="w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
-                        <i class="fab fa-facebook text-blue-600"></i>
-                        <span class="ml-2">Facebook</span>
-                    </a>
-                </div>
+               
             </div>
         </div>
     </div>
